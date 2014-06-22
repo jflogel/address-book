@@ -68,6 +68,18 @@
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.fitnesse</groupId>
+            <artifactId>fitnesse</artifactId>
+            <version>20140418</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.fitnesse</groupId>
+            <artifactId>fitlibrary</artifactId>
+            <version>20110301</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <sourceDirectory>src/main/groovy</sourceDirectory>
@@ -107,9 +119,9 @@
                 <version>1.5</version>
                 <dependencies>
                     <dependency>
-                    	<groupId>org.codehaus.gmaven.runtime</groupId>
-                    	<artifactId>gmaven-runtime-2.0</artifactId>
-                    	<version>1.5</version>
+                        <groupId>org.codehaus.gmaven.runtime</groupId>
+                        <artifactId>gmaven-runtime-2.0</artifactId>
+                        <version>1.5</version>
                     </dependency>
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
@@ -133,6 +145,20 @@
                 <configuration>
                     <parallel>methods</parallel>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
